@@ -1,0 +1,14 @@
+package tk.jcyfkimi.utils;
+
+import com.google.gson.Gson;
+
+import tk.jcyfkimi.beans.User;
+
+public class GsonUtils {
+
+	public User userParse(String jsonstr){
+		Gson gson = new Gson();
+		User user = gson.fromJson(jsonstr, User.class);
+		return user;
+	}
+}

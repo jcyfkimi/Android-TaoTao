@@ -1,0 +1,12 @@
+package tk.jcyfkimi.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+/**
+ * 接收客户端传来的参数，返回相应排序的json格式的goods数组
+ * @author Administrator
+ *
+ */
+public class GoodsAction extends ActionSupport {
+
+}

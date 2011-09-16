@@ -1,0 +1,10 @@
+package tk.jcyfkimi.DAO;
+
+/**
+ * 查询数据库，得到所有的goods集合。
+ * @author Administrator
+ *
+ */
+public class GoodsDAO {
+
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="horizontal"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <!--  
+    <ImageView android:id="@+id/blistImage"
+    	android:layout_width="72px"
+    	android:layout_height="72px"
+    	android:layout_marginLeft="10dip"
+    	android:src="@drawable/icon"/>
+    	-->
+    <TextView android:id="@+id/blistname"
+    	android:layout_width="80dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginLeft="10dip"
+    	android:text="gname"
+    	android:textSize="25dip"/>
+    <TextView android:id="@+id/blistprice"
+    	android:layout_width="80dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginLeft="10dip"
+    	android:text="gprice"
+    	android:textSize="25dip"/>
+    <Button androud="@+id/blistbuy"
+    	android:layout_width="75dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginLeft="5dip"
+    	android:text="buy"
+    	/>
+</LinearLayout>

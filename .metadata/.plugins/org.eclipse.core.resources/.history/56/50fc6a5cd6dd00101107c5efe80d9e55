@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaoTao</string>
+    <string name="logintext">用户名:</string>
+    <string name="passtext">密    码:</string>
+    <string name="forgetpass">忘记密码?</string>
+    <string name="btnlogin">登录</string>
+    <string name="btnreg">注册</string>
+    <string name="indexhead">淘淘购物</string>
+</resources>

@@ -1,0 +1,86 @@
+package tk.jcyfkimi.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import tk.jcyfkimi.beans.User;
+import tk.jcyfkimi.db.ConnDB;
+
+public class UserDAO {
+
+	private Connection conn = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+	private ConnDB cd = null;
+	
+	public boolean insert(User user){
+		cd = new ConnDB();
+		conn = cd.getConn();
+		String sql = "insert into user(uname,upass,uemail,utype,isLogin,regtime,credit_standing) values (?,?,?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUname());
+			pstmt.setString(2, user.getUpass());
+			pstmt.setString(3, user.getUemail());
+			pstmt.setInt(4, user.getUtype());
+			pstmt.setInt(5, user.getIsLogin());
+			pstmt.setString(6, user.getDatetime());
+			pstmt.setInt(7, user.getCredit_standing());
+			int result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean checkUser(User user){
+		String pass = null;
+		cd = new ConnDB();
+		conn = cd.getConn();
+		String sql = "select upass from table user where uname = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUname());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				pass = rs.getString("upass");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		if(user.getUpass().equals(pass)){
+			return true;
+		}
+		return false;
+	}
+	
+	public void close(){
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+}

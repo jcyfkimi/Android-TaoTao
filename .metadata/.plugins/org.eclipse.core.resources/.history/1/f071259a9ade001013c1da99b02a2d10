@@ -1,0 +1,10 @@
+package tk.jcyfkimi.utils;
+
+import tk.jcyfkimi.beans.User;
+
+public class GsonUtils {
+
+	public User userParse(String jsonstr){
+		User user = 
+	}
+}

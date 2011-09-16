@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+
+<!-- 
+    <package name="default" namespace="/" extends="struts-default">
+        <default-action-ref name="index" />
+        <action name="index">
+            <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+        </action>
+    </package>
+     -->
+     <package name="default" namespace="/" extends="json-default">
+        <action name="login" class="tk.jcyfkimi.action.LoginAction">
+            <result type="json">
+               message,utype
+            </result>
+        </action>
+        
+        <action name="register" class="tk.jcyfkimi.action.RegisterAction">
+            <result type="json">
+             message 
+            </result>
+        </action>
+        
+        <action name="goods" class="tk.jcyfkimi.action.GoodsAction">
+            <result type="json">
+             	<param name="includeProperties">glist.*,glist\.name</param>
+             	
+            </result>
+        </action>
+        
+        <action name="updateUser" class="tk.jcyfkimi.action.UpdateUserAction">
+            <result type="json">
+             message 
+            </result>
+        </action>
+    </package>
+</struts>

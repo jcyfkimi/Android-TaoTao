@@ -1,0 +1,38 @@
+package tk.jcyfkimi.action;
+
+import java.io.DataInputStream;
+
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport implements ServletRequestAware{
+
+	private HttpServletRequest request;
+
+	public void setServletRequest(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		this.request = request;
+		
+	}
+
+	@Override
+	public String execute() throws Exception {
+		// TODO Auto-generated method stub
+		StringBuffer sb = new StringBuffer();
+		ServletInputStream sis = request.getInputStream();
+		DataInputStream din = new DataInputStream(sis);
+		int ch;
+		while((ch = din.read()) != -1){
+			sb.append((char)ch);
+		}
+		din.close();
+		return super.execute();
+	}
+	
+	
+
+}

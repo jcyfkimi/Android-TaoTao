@@ -1,0 +1,21 @@
+package tk.jcyfkimi.UI.manage;
+
+import tk.jcyfkimi.R;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.EditText;
+
+public class ManageUserInfoActivity extends Activity {
+
+	private EditText origpass = null;
+	private EditText newpass = null;
+	private EditText newpasscfm = null;
+	private EditText newemail = null;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.manageuserinfo);
+	}
+
+}

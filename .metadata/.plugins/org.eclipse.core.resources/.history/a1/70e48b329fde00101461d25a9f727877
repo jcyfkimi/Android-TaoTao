@@ -1,0 +1,56 @@
+package tk.jcyfkimi.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import tk.jcyfkimi.beans.User;
+import tk.jcyfkimi.db.ConnDB;
+
+public class UserDAO {
+
+	private Connection conn = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+	private ConnDB cd = null;
+	
+	
+	public boolean checkUser(User user){
+		String pass = null;
+		cd = new ConnDB();
+		conn = cd.getConn();
+		String sql = "select upass from table user where uname = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUname());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				pass = rs.getString("upass");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return true;
+	}
+}

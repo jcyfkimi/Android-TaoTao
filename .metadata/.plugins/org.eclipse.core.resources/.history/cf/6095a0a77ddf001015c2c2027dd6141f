@@ -1,0 +1,84 @@
+package tk.jcyfkimi.UI.buyer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import tk.jcyfkimi.R;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+public class GoodsListActivity extends Activity {
+
+	private Spinner order = null;
+	private TextView userinfo = null;
+	private ListView goodsList = null;
+
+	private void findViews() {
+		userinfo = (TextView) findViewById(R.id.userinfo);
+		order = (Spinner) findViewById(R.id.switchorder);
+		goodsList = (ListView) findViewById(R.id.goodlistview);
+	}
+
+	// …Ë÷√Spinner
+	private void setSpinner() {
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				GoodsListActivity.this, R.array.switchorder,
+				android.R.layout.simple_spinner_item);
+		adapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		order.setAdapter(adapter);
+		order.setPrompt("«Î—°‘Ò");
+	}
+
+/*	private void setListView() {
+		SimpleAdapter simpleAdapter = new SimpleAdapter(GoodsListActivity.this,
+				getDate(), R.layout.blist, new String[] { "blistImage",
+						"blistname", "blistprice", "blistbuy" }, new int[] {
+						R.id.blistImage, R.id.blistname, R.id.blistprice,
+						R.id.blistbuy });
+		goodsList.setAdapter(simpleAdapter);
+	}
+*/
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.buyergoodlist);
+		findViews();
+		setSpinner();
+//		setListView();
+		SimpleAdapter simpleAdapter = new SimpleAdapter(GoodsListActivity.this,
+				getDate(), R.layout.blist, new String[] { "blistImage",
+						"blistname", "blistprice", "blistbuy" }, new int[] {
+						R.id.blistImage, R.id.blistname, R.id.blistprice,
+						R.id.blistbuy });
+		goodsList.setAdapter(simpleAdapter);
+		Intent intent = getIntent();
+		String username = intent.getStringExtra("uname");
+		userinfo.setText(username);
+	}
+
+	public List<Map<String,String>> getDate(){
+		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+		Map<String,String> map1 = new HashMap<String ,String >();
+		Map<String,String> map2 = new HashMap<String ,String >();
+		map1.put("blistImage", "image");
+		map1.put("blistname", "G1");
+		map1.put("blistprice", "999.99");
+		list.add(map1);
+		map2.put("blistImage", "image");
+		map2.put("blistname", "G2");
+		map2.put("blistprice", "699.99");
+		list.add(map2);
+		return list;
+	}
+	
+}

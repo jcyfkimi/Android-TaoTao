@@ -1,0 +1,112 @@
+package hoopy.prorocol;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class BaseProtocol {
+	private StringBuilder sb = new StringBuilder();
+
+	private HttpClient httpClient;
+	private HttpPost httpRequest;
+	private HttpResponse response;
+	private final int TIME_OUT_DELAY = 10000;
+
+	private List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>();
+
+	BaseProtocol() {
+		httpClient = new DefaultHttpClient();
+	}
+
+	/**
+	 * 向服务器端发送请求
+	 * 
+	 * @param url
+	 * @throws Exception
+	 */
+	protected void pack(String url) throws Exception {
+		//httpClient = new DefaultHttpClient();
+		initHttp();
+		httpRequest = new HttpPost(url);
+		httpRequest.setEntity(new UrlEncodedFormEntity(nameValuePair,HTTP.UTF_8));
+		response = httpClient.execute(httpRequest);
+	}
+	
+	/**
+	 * 超时设置
+	 * @return
+	 */
+	protected HttpClient initHttp() {
+		httpClient = new DefaultHttpClient();
+        httpClient.getParams().setIntParameter(
+                HttpConnectionParams.SO_TIMEOUT, TIME_OUT_DELAY); // 超时设置
+        httpClient.getParams().setIntParameter(
+                HttpConnectionParams.CONNECTION_TIMEOUT, TIME_OUT_DELAY);// 连接超时
+        return httpClient;
+    }
+
+	/**
+	 * 得到返回数据
+	 * 
+	 * @param url
+	 * @return
+	 * @throws Exception
+	 */
+	protected void parse() throws Exception {
+		// TODO 状态处理 500 200
+		if (response.getStatusLine().getStatusCode() == 200) {
+
+			BufferedReader bufferedReader2 = new BufferedReader(
+					new InputStreamReader(response.getEntity().getContent()));
+			for (String s = bufferedReader2.readLine(); s != null; s = bufferedReader2
+					.readLine()) {
+				sb.append(s);
+			}
+		}
+	}
+
+	/**
+	 * 向服务器发送信息
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	public void addNameValuePair(String key, String value) {
+		nameValuePair.add(new BasicNameValuePair(key, value));
+	}
+
+	/**
+	 * 返回JSONObject对象数据模型
+	 * 
+	 * @return
+	 * @throws JSONException
+	 */
+	public JSONObject getJSON() throws JSONException {
+		return new JSONObject(sb.toString());
+	}
+	
+	/**
+	 * 关闭连接
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	public void closeConn() {
+		httpClient.getConnectionManager().shutdown();
+	}
+
+}
+

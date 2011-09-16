@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+    <TextView android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="center_horizontal"
+    	android:text="@string/regtitle"
+    	android:textSize="30dip"/>
+    	
+	<LinearLayout
+		  xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:orientation="horizontal"
+		  android:layout_width="wrap_content"
+		  android:layout_height="wrap_content">
+		  <TextView android:layout_width="wrap_content"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="30dip"
+		  	android:layout_marginTop="10dip"
+		  	android:text="@string/reguname"
+		  	android:textSize="20dip"/>
+		  <EditText android:id="@+id/regname"
+		  	android:layout_width="180dip"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="20dip"
+		  	android:layout_marginTop="10dip"/>
+	  </LinearLayout>
+	  
+	  <LinearLayout
+		  xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:orientation="horizontal"
+		  android:layout_width="wrap_content"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="10dip">
+		  <TextView android:layout_width="wrap_content"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="30dip"
+		  	android:layout_marginTop="10dip"
+		  	android:text="@string/regpass"
+		  	android:textSize="20dip"/>
+		  <EditText android:id="@+id/regpass"
+		  	android:layout_width="180dip"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="20dip"
+		  	android:layout_marginTop="10dip"/>
+	  </LinearLayout>
+	  
+	  <LinearLayout
+		  xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:orientation="horizontal"
+		  android:layout_width="wrap_content"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="10dip">
+		  <TextView android:layout_width="wrap_content"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="30dip"
+		  	android:layout_marginTop="10dip"
+		  	android:text="@string/regpasscfm"
+		  	android:textSize="20dip"/>
+		  <EditText android:id="@+id/regpasscfm"
+		  	android:layout_width="180dip"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="20dip"
+		  	android:layout_marginTop="10dip"/>
+	  </LinearLayout>
+	  
+	   <LinearLayout
+		  xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:orientation="horizontal"
+		  android:layout_width="wrap_content"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="10dip">
+		  <TextView android:layout_width="wrap_content"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="30dip"
+		  	android:layout_marginTop="10dip"
+		  	android:text="@string/regemail"
+		  	android:textSize="20dip"/>
+		  <EditText android:id="@+id/regemail"
+		  	android:layout_width="180dip"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="20dip"
+		  	android:layout_marginTop="10dip"/>
+	  </LinearLayout>
+	  
+	  <LinearLayout
+		  xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:orientation="horizontal"
+		  android:layout_width="wrap_content"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="10dip">
+		  <RadioGroup android:id="@+id/rdogtype" 
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	>
+		  		<RadioButton android:id="@+id/utype"
+		  			android:layout_width="wrap_content"
+		  			android:layout_height="wrap_content"
+		  			android:text="@string/rdobuyer"
+		  			android:textSize="20dip"/>
+		  		<RadioButton android:id="@+id/utype"
+		  			android:layout_width="wrap_content"
+		  			android:layout_height="wrap_content"
+		  			android:text="@string/rdosailer"
+		  			android:textSize="20dip"/>
+		  	</RadioGroup>
+	  </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,13 @@
+#Wed Sep 14 14:40:06 CST 2011
+tomcat6Server.TaoTaoServer.deployIsOverProject=false
+tomcat6Server.TaoTaoServer.contextRoot=/TaoTaoServer
+tomcat6Server.TaoTaoServer.isDeployed=true
+tomcat6Server.TaoTaoServer.IEARProjectName=
+tomcat6Server.TaoTaoServer.isExploded=true
+tomcat6Server.TaoTaoServer.shouldBackup=false
+tomcat6Server.TaoTaoServer.type=WebDeployment
+tomcat6Server.TaoTaoServer.isUptoDate=true
+eclipse.preferences.version=1
+tomcat6Server.TaoTaoServer.altContextRoot=/TaoTaoServer
+tomcat6Server.TaoTaoServer.deploymentPath=D\:\\Program Files\\Java\\apache-tomcat-6.0.20\\webapps\\TaoTaoServer
+tomcat6Server.TaoTaoServer.shouldOverwrite=false

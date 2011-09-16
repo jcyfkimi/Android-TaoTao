@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaoTao</string>
+    <string name="logintext">账号:</string>
+    <string name="passtext">密码:</string>
+    <string name="forgetpass">忘记密码?</string>
+    <string name="btnlogin">登录</string>
+    <string name="btnreg">注册</string>
+    <string name="regtitle">欢迎注册</string>
+    <string name="reguname">账        号:</string>
+    <string name="regpass">密        码:</string>
+    <string name="regpasscfm">确认密码:</string>
+    <string name="regemail">电子邮件:</string>
+    <string name="rdobuyer">买家</string>
+    <string name="rdosailer">卖家</string>    
+    <string name="indexhead">淘淘购物</string>
+</resources>

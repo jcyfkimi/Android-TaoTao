@@ -1,0 +1,56 @@
+package tk.jcyfkimi.action;
+
+import java.io.DataInputStream;
+
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import tk.jcyfkimi.DAO.UserDAO;
+import tk.jcyfkimi.beans.User;
+import tk.jcyfkimi.utils.GsonUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport implements ServletRequestAware{
+
+	private HttpServletRequest request;
+	private String message;
+
+	public void setServletRequest(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		this.request = request;
+		
+	}
+
+	@Override
+	public String execute() throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("loginAction");
+		StringBuffer sb = new StringBuffer();
+		ServletInputStream sis = request.getInputStream();
+		DataInputStream din = new DataInputStream(sis);
+		int ch;
+		while((ch = din.read()) != -1){
+			sb.append((char)ch);
+		}
+		din.close();
+		System.out.println(sb.toString());
+		String jsonstr = sb.toString();
+		GsonUtils gsonUtils = new GsonUtils();
+		User user = gsonUtils.userParse(jsonstr);
+		//jdbc连接数据库进行验证
+		UserDAO userDAO = new UserDAO();
+		if(userDAO.checkUser(user)){
+			message = "success";
+		} else {
+			message = "error";
+		}
+		//System.out.println(user.getUname() + ":" + user.getUpass());
+		return ERROR;
+	}
+	
+	
+
+}

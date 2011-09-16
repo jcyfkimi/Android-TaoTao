@@ -1,0 +1,37 @@
+package tk.jcyfkimi.beans;
+
+public class UpdateUserInfo {
+
+	private String origpass ;
+	private String newpass;
+	private String newemail;
+	public String getOrigpass() {
+		return origpass;
+	}
+	public UpdateUserInfo() {
+		super();
+	}
+	public UpdateUserInfo(String origpass, String newpass, String newemail) {
+		super();
+		this.origpass = origpass;
+		this.newpass = newpass;
+		this.newemail = newemail;
+	}
+	public void setOrigpass(String origpass) {
+		this.origpass = origpass;
+	}
+	public String getNewpass() {
+		return newpass;
+	}
+	public void setNewpass(String newpass) {
+		this.newpass = newpass;
+	}
+	public String getNewemail() {
+		return newemail;
+	}
+	public void setNewemail(String newemail) {
+		this.newemail = newemail;
+	}
+	
+	
+}

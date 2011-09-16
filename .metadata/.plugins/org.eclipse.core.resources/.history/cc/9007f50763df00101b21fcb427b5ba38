@@ -1,0 +1,10 @@
+package tk.jcyfkimi.beans;
+
+public class Goods {
+
+	private int gid;
+	private String gname;
+	private int gstorage;
+	private double gprice;
+	private int guid;
+}

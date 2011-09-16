@@ -1,0 +1,19 @@
+package tk.jcyfkimi.util;
+
+import com.google.gson.Gson;
+
+import tk.jcyfkimi.beans.User;
+
+public class gsonUtils {
+
+	/**
+	 * 返回一个json格式的user字符串
+	 * @param user
+	 * @return
+	 */
+	public String getJson(User user){
+		Gson gson = new Gson();
+		System.out.println(gson.toJson(user));
+		return gson.toJson(user);
+	}
+}

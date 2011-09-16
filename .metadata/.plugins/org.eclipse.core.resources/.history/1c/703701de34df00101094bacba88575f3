@@ -1,0 +1,9 @@
+package tk.jcyfkimi.action;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UpdateAction extends ActionSupport implements ServletRequestAware{
+
+}

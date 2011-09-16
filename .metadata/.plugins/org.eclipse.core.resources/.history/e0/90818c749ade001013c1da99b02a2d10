@@ -1,0 +1,5 @@
+package tk.jcyfkimi.utils;
+
+public class GsonUtils {
+
+}

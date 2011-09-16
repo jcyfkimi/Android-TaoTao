@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaoTao</string>
+    <string name="logintext">账号:</string>
+    <string name="passtext">密码:</string>
+    <string name="forgetpass">忘记密码?</string>
+    <string name="btnlogin">登录</string>
+    <string name="btnreg">注册</string>
+    <string name="regtitle">欢迎注册</string>
+    <string name="reguname">账        号:</string>
+    <string name="regpass">密        码:</string>
+    <string name="regpasscfm">确认密码:</string>
+    <string name="regemail">电子邮件:</string>
+    <string name="rdobuyer">买家</string>
+    <string name="rdosailer">卖家</string>    
+    <string name="regbtn">注册</string>
+    <string name="regreset">重置</string>
+    <string name="indexhead">淘淘购物</string>
+    <string name="searchbtn">搜索</string>
+    <string name="menuexit">退出</string>
+    <string name="menumanage">管理账号</string>
+    <string name="manageinfoupdate">个人资料修改</string>
+    <string name="manageinfopass">原始密码:</string>
+    <string name="manageinfonewpass">新密码:</string>
+    <string name="manageinfonewpasscfm">确认密码:</string>
+    <string name="manageinfonewemail">新邮箱:</string>
+    <string name="btnupdate">确认修改:</string>
+    <string name="btnreset">信息重置:</string>
+    <string-array name="switchorder">
+    	<item>按价格排序</item>
+    	<item>按信誉排序</item>
+    	<item>按销量排序</item>
+    </string-array>
+</resources>

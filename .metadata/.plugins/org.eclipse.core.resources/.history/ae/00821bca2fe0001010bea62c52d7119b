@@ -1,0 +1,5 @@
+package tk.jcyfkimi.beans;
+
+public class UpdateUserInfo {
+
+}

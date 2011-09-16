@@ -1,0 +1,14 @@
+drop database if exists taotao;
+create database taotao;
+use taotao;
+create table user(uid int primary key AUTO_INCREMENT,
+       uname varchar(20),
+       upass varchar(20),
+       email varchar(20),
+       utype int ,
+       isLogin int ,
+       regtime DATETIME,
+       credit_standing int);
+
+
+

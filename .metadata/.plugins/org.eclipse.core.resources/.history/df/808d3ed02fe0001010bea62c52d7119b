@@ -1,0 +1,10 @@
+package tk.jcyfkimi.beans;
+
+public class UpdateUserInfo {
+
+	private String origpass ;
+	private String newpass;
+	private String newemail;
+	
+	
+}

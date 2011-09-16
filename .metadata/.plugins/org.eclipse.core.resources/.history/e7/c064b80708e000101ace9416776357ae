@@ -1,0 +1,127 @@
+package tk.jcyfkimi.http;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * 实现各类和服务器交互的功能
+ * 
+ * @author Administrator
+ * 
+ */
+public class HttpHelper {
+
+	private StringBuffer sb = new StringBuffer();
+
+	private HttpClient httpClient;
+	private HttpPost httpRequest;
+	private HttpResponse response;
+
+	/**
+	 * 注册账号
+	 * 返回一个int值，-1代表已存在用户名，0代表注册失败，1代表注册成功
+	 * @param jsonstr
+	 * @return
+	 */
+	public int register(String jsonstr) {
+		String message = null;
+		String url = "http://10.0.2.2:8080/TaoTaoServer/register";
+		JSONObject jsonObj = sendToServer(url, jsonstr);
+		//System.out.println(sb.toString());
+		try {
+			message = jsonObj.getString("message");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (message.equals("success")) {
+			// System.out.println(message);
+			return 1;
+		} else if(message.equals("error")){
+			return 0;
+		}
+
+		return -1;
+	}
+
+	/**
+	 * 检查登陆，发送一个json的字符串到服务器
+	 * 返回utype到客户端
+	 * @param jsonstr
+	 * @return
+	 */
+	public int checkLogin(String jsonstr) {
+		String message = null;
+		int utype = 1;
+		String url = "http://10.0.2.2:8080/TaoTaoServer/login";
+		System.out.println(url);
+		JSONObject jsonObj = sendToServer(url, jsonstr);
+		System.out.println(sb.toString());
+		try {
+			message = jsonObj.getString("message");
+			utype = jsonObj.getInt("utype");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (message.equals("success") && utype != -1) {
+			return utype;
+		}
+
+		return -1;
+	}
+
+	/**
+	 * 发送json数据到服务器
+	 * 接收从服务器返回的json数据
+	 * @param url
+	 * @param jsonstr
+	 * @return
+	 */
+	private JSONObject sendToServer(String url, String jsonstr) {
+		JSONObject jsonObject = null;
+		httpRequest = new HttpPost(url);
+		try {
+			StringEntity se = new StringEntity(jsonstr);
+			httpRequest.setEntity(se);
+			response = new DefaultHttpClient().execute(httpRequest);
+			if (response.getStatusLine().getStatusCode() == 200) {
+				BufferedReader bufferedReader2 = new BufferedReader(
+						new InputStreamReader(response.getEntity().getContent()));
+				for (String s = bufferedReader2.readLine(); s != null; s = bufferedReader2
+						.readLine()) {
+					sb.append(s);
+				}
+			}
+			jsonObject = new JSONObject(sb.toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonObject;
+	}
+
+}
